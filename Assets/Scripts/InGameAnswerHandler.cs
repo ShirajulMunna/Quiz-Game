@@ -118,7 +118,7 @@ public class InGameAnswerHandler : MonoBehaviour
 
         else 
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(0.5f);
             questionFinished.RaiseEvent();
         
         }
@@ -132,8 +132,6 @@ public class InGameAnswerHandler : MonoBehaviour
     {
         Debug.Log("Open Gift/ Fail Panel");
         mainResultPanel.SetActive(true);
-
-       // giftPanel.SetActive(true);
         Manager.Instance.gameStat.SetActive(true);
         Manager.Instance.OpenStatBox();
         

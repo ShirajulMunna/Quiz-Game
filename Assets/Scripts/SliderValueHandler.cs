@@ -98,7 +98,7 @@ public class SliderValueHandler : MonoBehaviour
         else 
         {
             TimeManager.Instacne.SetTime(time_3);
-            PlayerPrefs.SetInt("Time", question_1);
+            PlayerPrefs.SetInt("Time", time_3);
 
 
         }

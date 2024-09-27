@@ -129,14 +129,7 @@ public class Manager : MonoBehaviour
             Debug.Log("error");
         
         }
-       /* if (imageList.Count > index)
-        {
-            imageSlot.sprite = imageList[index];
-        }
-        else
-        {
-            Debug.LogError("Index out of range. No image found at index: " + index);
-        }*/
+    
     }
 
    
@@ -164,7 +157,7 @@ public class Manager : MonoBehaviour
 
     public void OpenStatBox() 
     {
-       // gameStat.SetActive(true);
+       
         if (questionThresh == InGameAnswerHandler.Instance.score)
         {
             perfectImage.GetComponent<Image>().sprite = perfect[0];
