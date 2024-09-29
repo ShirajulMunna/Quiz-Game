@@ -12,9 +12,12 @@ public class TimeManager : MonoBehaviour
     public TextMeshProUGUI countdownDisplay;
     public EventChannelSO timerEvent;
     public bool isCountDownStart;
+     
 
     private void Start()
     {
+       
+        
         Instacne = this;
     }
     private void OnEnable() 
@@ -65,7 +68,46 @@ public class TimeManager : MonoBehaviour
     void OnCountdownFinished()
     {
         Debug.Log("Countdown has finished!");
+       // LoadNext();
     
+
+
+    }
+
+    public void LoadNext()
+    {
+        StartCoroutine(LoadNextQuestion());
+
+
+    }
+
+
+
+    IEnumerator LoadNextQuestion()
+    {
+
+
+
+        if (Manager.Instance.currentImageIndex != Manager.Instance.questionThresh - 1)
+        {
+            yield return new WaitForSeconds(0.5f);
+            
+           Manager.Instance.LoadNextImage();
+           int count=InGameAnswerHandler.Instance. questionCounter;
+           InGameAnswerHandler.Instance. questionCounterTxt.text = count.ToString();
+           TimeManager.Instacne.isCountDownStart = true;
+           TimeManager.Instacne.StartTime();
+
+        }
+
+        else
+        {
+           yield return new WaitForSeconds(0.5f);
+           InGameAnswerHandler.Instance. questionFinished.RaiseEvent();
+
+        }
+
+
 
 
     }

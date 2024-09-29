@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DataSet_3
   m_EditorClassIdentifier: 
   answers:
-  - 
-  - 
-  - 
-  rightAnswer: 0
+  - 'Dollar '
+  - Yen
+  - Won
+  rightAnswer: 2

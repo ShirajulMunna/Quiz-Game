@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -54,7 +55,6 @@ public class InGameAnswerHandler : MonoBehaviour
 
     }
 
-
     public void AnswerHandle()
     {
         
@@ -66,6 +66,7 @@ public class InGameAnswerHandler : MonoBehaviour
 
     public void CheckAnswer(int index) 
     {
+        isButtonPressed = true;
         TimeManager.Instacne.isCountDownStart = false;
         int winningNumber = inputData[currentQuestionIndex].rightAnswer;
 
@@ -93,7 +94,14 @@ public class InGameAnswerHandler : MonoBehaviour
         blackBg.gameObject.SetActive(true);
         resultBanner[index].gameObject.SetActive(true);
 
+        LoadNext(index);
+
+    }
+
+    public void LoadNext(int index) 
+    {
         StartCoroutine(LoadNextQuestion(index));
+
 
     }
 
@@ -101,8 +109,7 @@ public class InGameAnswerHandler : MonoBehaviour
     {
        
 
-
-        if (Manager.Instance.currentImageIndex != Manager.Instance.questionThresh-1 )
+        if (Manager.Instance.currentImageIndex != Manager.Instance.questionThresh-1 && isButtonPressed)
         {
             yield return new WaitForSeconds(0.5f);
             blackBg.gameObject.SetActive(false);
@@ -113,6 +120,7 @@ public class InGameAnswerHandler : MonoBehaviour
             questionCounterTxt.text = questionCounter.ToString();
             TimeManager.Instacne.isCountDownStart = true;
             TimeManager.Instacne.StartTime();
+            isButtonPressed = false;
 
         }
 

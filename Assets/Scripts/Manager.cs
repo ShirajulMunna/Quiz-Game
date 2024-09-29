@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
+   
     public EventChannelSO onLoadImage;
     public static Manager Instance;
     public string imageFolderPath = "Images";
@@ -62,8 +63,6 @@ public class Manager : MonoBehaviour
 
     }
 
-
-
     public void SetQuestionThreshHold(int threshHold) 
     {
         this.questionThresh = threshHold;
@@ -89,11 +88,15 @@ public class Manager : MonoBehaviour
             }
 
         }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            Application.Quit();
+
+        }
 
     }
        
     
-
     private void LoadImagesFromProject()
     {
         
@@ -174,7 +177,7 @@ public class Manager : MonoBehaviour
     }
     public void OpenGiftBox()
     {
-
+        AudioManager.Instance.PlayLastPageSound();
         GiftBox.gameObject.SetActive(true);
         giftItem.GetComponent<Image>().sprite = itemList[UnityEngine.Random.Range(0,itemList.Count)];
         particles[paricleValue].SetActive(true);
